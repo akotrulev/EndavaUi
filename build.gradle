@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.testng:testng:7.11.0'
+    implementation 'io.qameta.allure:allure-testng:2.29.1'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.35.0'
+    implementation 'org.seleniumhq.selenium:selenium-api:4.35.0'
+    implementation 'io.github.bonigarcia:webdrivermanager:6.2.0'
+}
+
+
+tasks.register('fatJar', Jar) {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    manifest {
+        attributes 'Main-Class': ' org.testng.TestNG'
+    }
+    archiveClassifier.set("tests")
+    from sourceSets.test.output + sourceSets.test.allSource
+    archiveBaseName.set(project.name + '-all')
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    destinationDirectory.set(file("$rootDir"))
+    with jar
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
+    doLast {
+        println "Fat JAR created at: ${archiveFile.get().asFile.absolutePath}"
+    }
+}
+
+test {
+    useTestNG()
+    systemProperties System.getProperties()
+}
