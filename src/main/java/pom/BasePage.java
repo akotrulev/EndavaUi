@@ -7,10 +7,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 
 public class BasePage {
-    private WebDriver driver;
+    protected WebDriver driver;
     private WebDriverWait wait;
 
     public BasePage(WebDriver driver) {
@@ -31,15 +32,7 @@ public class BasePage {
         return driver.findElement(locator);
     }
 
-    public void click(By locator) {
-        findElement(locator).click();
-    }
-
-    public void typeText(By locator, String text) {
-        findElement(locator).sendKeys(text);
-    }
-
-    public String getText(By locator) {
-        return findElement(locator).getText();
+    public List<WebElement> findElements(By locator) {
+        return driver.findElements(locator);
     }
 }
