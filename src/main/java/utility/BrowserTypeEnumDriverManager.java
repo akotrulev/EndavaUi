@@ -39,11 +39,9 @@ public enum BrowserTypeEnumDriverManager {
 
     public RemoteWebDriver getRemoteWebDriver() {
         this.webDriverManagerConsumer.accept(new VoidDriverManager());
-        if(webDriver == null) {
-            webDriver = this.remoteWebDriver.get();
-            webDriver.manage().window().maximize();
-        }
-
+        webDriver = this.remoteWebDriver.get();
+        // Set resolution here
+        webDriver.manage().window().maximize();
         return webDriver;
     }
 }

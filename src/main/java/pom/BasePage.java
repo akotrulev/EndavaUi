@@ -19,6 +19,10 @@ public class BasePage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
+    public void navigateToUrl(String url) {
+        driver.navigate().to(url);
+    }
+
     public boolean isElementVisible(By locator) {
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
@@ -34,5 +38,13 @@ public class BasePage {
 
     public List<WebElement> findElements(By locator) {
         return driver.findElements(locator);
+    }
+
+    public WebElement findElement(By locator, WebElement parent) {
+        return parent.findElement(locator);
+    }
+
+    public List<WebElement> findElements(By locator, WebElement parent) {
+        return parent.findElements(locator);
     }
 }

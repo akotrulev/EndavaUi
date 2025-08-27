@@ -9,6 +9,10 @@ public class NavigationMenu extends BasePage {
         super(driver);
     }
 
+    public WebElement menuButton() {
+        return findElement(By.id("react-burger-menu-btn"));
+    }
+
     public WebElement inventory() {
         return findElement(By.cssSelector("[data-test='inventory-sidebar-link']"));
     }
@@ -27,5 +31,9 @@ public class NavigationMenu extends BasePage {
 
     public WebElement closeButton() {
         return findElement(By.id("react-burger-cross-btn"));
+    }
+
+    public WebElement error() {
+        return findElement(By.cssSelector("[data-test='error']"));
     }
 }

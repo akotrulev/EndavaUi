@@ -20,10 +20,10 @@ public class CartPage extends BasePage {
         return findElement(By.cssSelector("[data-test='checkout']"));
     }
 
-    public List<ProductCard> inventoryItem() {
+    public List<ProductCard> productCards() {
         ArrayList<ProductCard> productCards = new ArrayList<>();
         findElements(By.cssSelector("[data-test='inventory-item']")).forEach(webElement -> {
-            productCards.add(new ProductCard(driver));
+            productCards.add(new ProductCard(driver, webElement));
         });
         return productCards;
     }
