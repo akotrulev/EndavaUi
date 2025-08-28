@@ -9,6 +9,14 @@ public class NavigationMenu extends BasePage {
         super(driver);
     }
 
+    public WebElement cart() {
+        return findElement(By.cssSelector("[data-test='shopping-cart-link']"));
+    }
+
+    public WebElement cartBadge() {
+        return findElement(By.cssSelector("[data-test='shopping-cart-badge']"));
+    }
+
     public WebElement menuButton() {
         return findElement(By.id("react-burger-menu-btn"));
     }

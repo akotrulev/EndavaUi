@@ -14,6 +14,6 @@ public class LoginTest extends BaseTest {
         loginPage.loginButton().click();
 
         ProductPage productPage = new ProductPage(driver);
-        Assert.assertTrue(productPage.cart().isDisplayed(), "Cart button not visible after login attempt.");
+        Assert.assertTrue(productPage.navigationMenu.cart().isDisplayed(), "Cart button not visible after login attempt.");
     }
 }

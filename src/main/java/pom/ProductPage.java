@@ -8,8 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductPage extends BasePage {
+    public NavigationMenu navigationMenu;
+
     public ProductPage(WebDriver driver) {
         super(driver);
+        navigationMenu = new NavigationMenu(driver);
     }
 
     public List<ProductCard> productCards() {
@@ -20,15 +23,11 @@ public class ProductPage extends BasePage {
         return productCards;
     }
 
-    public WebElement cart() {
-        return findElement(By.cssSelector("[data-test='shopping-cart-link']"));
-    }
-
-    public WebElement cartBadge() {
-        return findElement(By.cssSelector("[data-test='shopping-cart-badge']"));
-    }
-
     public WebElement filterDropdown() {
+        return findElement(By.cssSelector("[data-test='product-sort-container']"));
+    }
+
+    public WebElement activeOption() {
         return findElement(By.cssSelector("[data-test='active-option']"));
     }
 

@@ -8,8 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartPage extends BasePage {
+
+    public NavigationMenu navigationMenu;
     public CartPage(WebDriver driver) {
         super(driver);
+        navigationMenu = new NavigationMenu(driver);
     }
 
     public WebElement continueShopping() {

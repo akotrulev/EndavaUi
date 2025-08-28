@@ -4,14 +4,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pom.BasePage;
+import pom.NavigationMenu;
 import pom.ProductCard;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CheckoutOverviewPage extends BasePage {
+    public NavigationMenu navigationMenu;
+
     public CheckoutOverviewPage(WebDriver driver) {
         super(driver);
+        navigationMenu = new NavigationMenu(driver);
     }
 
     public List<ProductCard> productCards() {
