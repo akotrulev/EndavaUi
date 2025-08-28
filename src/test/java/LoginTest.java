@@ -5,7 +5,7 @@ import pom.ProductPage;
 
 public class LoginTest extends BaseTest {
 
-    @Test
+    @Test(groups = "Smoke")
     public void successfulLogin() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.goToPage();

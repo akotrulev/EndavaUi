@@ -1,4 +1,3 @@
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pom.CartPage;
@@ -14,7 +13,7 @@ import java.util.List;
 
 public class CheckoutTest extends BaseTest {
 
-    @Test(testName = "Scenario 1", groups = "regression")
+    @Test(testName = "Scenario 1", groups = "Regression")
     public void validCheckoutFlow() {
         // Login
         ProductPage productPage = new LoginPage(driver).successfulLogin(users.getFirst(), password);
