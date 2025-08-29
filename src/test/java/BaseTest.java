@@ -15,7 +15,7 @@ public class BaseTest {
     protected static List<String> users;
     protected static String password;
 
-    @BeforeSuite
+    @BeforeSuite(alwaysRun = true)
     public void getCredentials() {
         DriverFactory.setDriver();
 
@@ -27,13 +27,13 @@ public class BaseTest {
         DriverFactory.quitDriver();
     }
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void startDriver() {
         DriverFactory.setDriver();
         driver = DriverFactory.getDriver();
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void quitDriver() {
         DriverFactory.quitDriver();
     }
