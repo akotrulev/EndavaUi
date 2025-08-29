@@ -17,7 +17,6 @@ dependencies {
     implementation 'io.github.bonigarcia:webdrivermanager:6.2.0'
 }
 
-
 tasks.register('fatJar', Jar) {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 

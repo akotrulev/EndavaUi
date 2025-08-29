@@ -4,36 +4,37 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import pom.LoginPage;
-import utility.DriverManager;
+import utility.DriverFactory;
 
 import java.util.List;
 
 
 public class BaseTest {
-    private DriverManager driverManager;
     protected WebDriver driver;
 
-    protected List<String> users;
-    protected String password;
+    protected static List<String> users;
+    protected static String password;
 
     @BeforeSuite
     public void getCredentials() {
-        WebDriver localDriver = new DriverManager().getDriver();
+        DriverFactory.setDriver();
+
+        WebDriver localDriver =  DriverFactory.getDriver();
         LoginPage loginPage = new LoginPage(localDriver);
         loginPage.goToPage();
         users = loginPage.defaultUsers();
         password = loginPage.defaultPassword();
-        localDriver.quit();
+        DriverFactory.quitDriver();
     }
 
     @BeforeMethod
     public void startDriver() {
-       driverManager = new DriverManager();
-       driver = driverManager.getDriver();
+        DriverFactory.setDriver();
+        driver = DriverFactory.getDriver();
     }
 
     @AfterMethod
     public void quitDriver() {
-        driverManager.quitDriver();
+        DriverFactory.quitDriver();
     }
 }
