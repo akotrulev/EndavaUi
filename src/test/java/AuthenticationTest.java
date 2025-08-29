@@ -3,7 +3,7 @@ import org.testng.annotations.Test;
 import pom.LoginPage;
 import pom.ProductPage;
 
-public class LoginTest extends BaseTest {
+public class AuthenticationTest extends BaseTest {
 
     @Test(groups = "Smoke")
     public void successfulLogin() {
